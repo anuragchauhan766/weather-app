@@ -46,28 +46,35 @@ function Tempdetail({ weather: { current, timezone } }) {
       </div>
 
       {/* third row */}
-      <div className="flex justify-content items-center my-6 text-white text-sm space-x-2">
-        <UilSun />
-        <p className="font-light">
-          Rise:{" "}
-          <span className="font-medium ml-1">{formatLocalTime(sunrise, timezone, "hh:mm a")}</span>
-        </p>
-        <p className="font-light">|</p>
-        <UilSunset />
-        <p className="font-light">
-          Set:{" "}
-          <span className="font-medium ml-1">{formatLocalTime(sunset, timezone, "hh:mm a")}</span>
-        </p>
-        <p className="font-light">|</p>
-        <UilArrowUp />
-        <p className="font-light">
-          High: <span className="font-medium ml-1">{temp_max.toFixed()}&deg;</span>
-        </p>
-        <p className="font-light">|</p>
-        <UilArrowDown />
-        <p className="font-light">
-          Low: <span className="font-medium ml-1">{temp_min.toFixed()}&deg;</span>
-        </p>
+      <div className="flex flex-col md:flex-row justify-center items-center my-6 text-white text-sm     space-x-0 md:space-x-2">
+        <div className="flex flex-row justify-center items-center   space-x-4 md:space-x-2">
+          <UilSun />
+          <p className="font-light">
+            Rise:{" "}
+            <span className="font-medium ml-1">
+              {formatLocalTime(sunrise, timezone, "hh:mm a")}
+            </span>
+          </p>
+          <p className="font-light">|</p>
+          <UilSunset />
+          <p className="font-light">
+            Set:{" "}
+            <span className="font-medium ml-1">{formatLocalTime(sunset, timezone, "hh:mm a")}</span>
+          </p>
+        </div>
+
+        <p className="font-light hidden md:inline">|</p>
+        <div className="flex flex-row justify-center items-center  space-x-4 md:space-x-2">
+          <UilArrowUp />
+          <p className="font-light">
+            High: <span className="font-medium ml-1">{temp_max.toFixed()}&deg;</span>
+          </p>
+          <p className="font-light">|</p>
+          <UilArrowDown />
+          <p className="font-light">
+            Low: <span className="font-medium ml-1">{temp_min.toFixed()}&deg;</span>
+          </p>
+        </div>
       </div>
     </div>
   );

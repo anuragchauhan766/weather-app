@@ -8,7 +8,7 @@ import Forecast from "./components/Forecast";
 import { getweatherdata } from "./api/weather";
 
 function App() {
-  const [city, setCity] = useState("London");
+  const [city, setCity] = useState("Delhi");
   const [units, setUnits] = useState("metric");
   const [weather, setWeather] = useState(null);
   useEffect(() => {
@@ -19,7 +19,7 @@ function App() {
     })();
   }, [city, units]);
   return (
-    <div className="mx-auto max-w-screen-md mt-4 py-5 px-32 h-fit bg-gradient-to-br from-cyan-700 to-blue-700 shadow-xl shadow-gray-400">
+    <div className="mx-auto max-w-screen-md  mt-4 py-5 px-5 md:px-32 h-fit bg-gradient-to-br from-cyan-700 to-blue-700 shadow-xl shadow-gray-400">
       <TopMenu setCity={setCity} />
       <Search setCity={setCity} setUnits={setUnits} units={units} />
       {weather && (

@@ -25,7 +25,7 @@ function TopMenu(props) {
     }
   ];
   return (
-    <div className="flex justify-around items-center">
+    <div className="hidden md:flex justify-around items-center">
       {citites.map((city) => (
         <button
           type="button"

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { UilSearch, UilLocationPoint } from "@iconscout/react-unicons";
+import { UilSearch } from "@iconscout/react-unicons";
 
 function Search(props) {
   const [input, setInput] = useState("");
@@ -12,8 +12,8 @@ function Search(props) {
     if (units !== newUnit) setUnits(newUnit);
   };
   return (
-    <div className="flex justify-center items-center my-6">
-      <div className="flex justify-center items-center w-3/4 space-x-4">
+    <div className="flex flex-col md:flex-row justify-center items-center  my-4 md:my-6">
+      <div className="flex justify-center items-center w-full md:w-3/4 space-x-4">
         <input
           placeholder="search city... "
           className="text-xl p-2 bg-white w-full font-light shadow-xl focus:outline-none capitalize rounded-md"
@@ -26,25 +26,25 @@ function Search(props) {
           className="text-white cursor-pointer transition ease-out hover:scale-125"
           onClick={handlesearch}
         />
-        <UilLocationPoint
+        {/* <UilLocationPoint
           size={25}
           className="text-white cursor-pointer transition ease-out hover:scale-125"
-        />
+        /> */}
       </div>
-      <div className="flex justify-center items-center w-1/4">
+      <div className="flex justify-center items-center w-1/2 my-6 md:m-0  text-3xl md:text-xl">
         <button
           type="button"
           name="metric"
-          className="text-xl text-white font-light transition ease-out hover:scale-125"
+          className=" text-white font-light transition ease-out hover:scale-125"
           onClick={() => setUnits("metric")}
         >
           &deg;C
         </button>
-        <p className="text-xl text-white mx-1">|</p>
+        <p className=" text-white mx-1">|</p>
         <button
           type="button"
           name="imperial"
-          className="text-xl text-white font-light transition ease-out hover:scale-125"
+          className=" text-white font-light transition ease-out hover:scale-125"
           onClick={handleunitchange}
         >
           &deg;F
