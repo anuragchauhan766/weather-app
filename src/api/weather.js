@@ -1,12 +1,13 @@
+/* eslint-disable camelcase */
+import { DateTime } from "luxon";
+
 const BASE_URL = "https://api.openweathermap.org/data/2.5/";
 const API_KEY = import.meta.env.VITE_API_OPEN_WEATHER;
-
-import { DateTime } from "luxon";
 const fetchdata = async (infoType, searchparams) => {
   const url = new URL(infoType, BASE_URL);
   url.search = new URLSearchParams({
     ...searchparams,
-    appid: API_KEY,
+    appid: API_KEY
   });
 
   try {
@@ -14,10 +15,12 @@ const fetchdata = async (infoType, searchparams) => {
     const data = await res.json();
     return data;
   } catch (error) {
-    console.log(error);
+    throw new Error(error);
   }
 };
 
+export const formatLocalTime = (secs, zone, format = "cccc, dd LLL yyyy' | Local Time: 'hh:mm a") =>
+  DateTime.fromSeconds(secs).setZone(zone).toFormat(format);
 const getcurrentWeather = async (searchparams) => {
   const data = await fetchdata("weather", searchparams);
 
@@ -28,7 +31,7 @@ const getcurrentWeather = async (searchparams) => {
     dt,
     weather,
     wind: { speed },
-    sys: { country, sunrise, sunset },
+    sys: { country, sunrise, sunset }
   } = data;
   const { main: detail, icon } = weather[0];
   return {
@@ -46,37 +49,33 @@ const getcurrentWeather = async (searchparams) => {
     sunrise,
     sunset,
     detail,
-    icon,
+    icon
   };
 };
 const getForcastdata = async (searchparams) => {
   const data = await fetchdata("onecall", searchparams);
+  // eslint-disable-next-line prefer-const
   let { timezone, hourly, daily } = data;
   daily = daily.slice(1, 6).map((d) => {
     return {
       title: formatLocalTime(d.dt, timezone, "ccc"),
       temp: d.temp.day,
-      icon: d.weather[0].icon,
+      icon: d.weather[0].icon
     };
   });
   hourly = hourly.slice(1, 6).map((d) => {
     return {
       title: formatLocalTime(d.dt, timezone, "hh:mm a"),
       temp: d.temp,
-      icon: d.weather[0].icon,
+      icon: d.weather[0].icon
     };
   });
   return {
     timezone,
     daily,
-    hourly,
+    hourly
   };
 };
-export const formatLocalTime = (
-  secs,
-  zone,
-  format = "cccc, dd LLL yyyy' | Local Time: 'hh:mm a"
-) => DateTime.fromSeconds(secs).setZone(zone).toFormat(format);
 
 export const getweatherdata = async ({ city, units = "metric" }) => {
   const current = await getcurrentWeather({ q: city, units });
@@ -85,10 +84,9 @@ export const getweatherdata = async ({ city, units = "metric" }) => {
     lat,
     lon,
     exclude: "current,minutly,alerts",
-    units,
+    units
   });
   return { current, ...forcast };
 };
 
-export const geticonURL = (code) =>
-  `https://openweathermap.org/img/wn/${code}@2x.png`;
+export const geticonURL = (code) => `https://openweathermap.org/img/wn/${code}@2x.png`;

@@ -1,4 +1,3 @@
-import React from "react";
 import { useState } from "react";
 import { UilSearch, UilLocationPoint } from "@iconscout/react-unicons";
 
@@ -21,7 +20,7 @@ function Search(props) {
           onChange={(e) => {
             setInput(e.target.value);
           }}
-        ></input>
+        />
         <UilSearch
           size={25}
           className="text-white cursor-pointer transition ease-out hover:scale-125"
@@ -34,6 +33,7 @@ function Search(props) {
       </div>
       <div className="flex justify-center items-center w-1/4">
         <button
+          type="button"
           name="metric"
           className="text-xl text-white font-light transition ease-out hover:scale-125"
           onClick={() => setUnits("metric")}
@@ -42,6 +42,7 @@ function Search(props) {
         </button>
         <p className="text-xl text-white mx-1">|</p>
         <button
+          type="button"
           name="imperial"
           className="text-xl text-white font-light transition ease-out hover:scale-125"
           onClick={handleunitchange}

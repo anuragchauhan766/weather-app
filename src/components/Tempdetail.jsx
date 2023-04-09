@@ -1,5 +1,5 @@
+/* eslint-disable camelcase */
 import React from "react";
-import { geticonURL, formatLocalTime } from "../api/weather";
 import {
   UilTemperature,
   UilArrowUp,
@@ -7,22 +7,13 @@ import {
   UilTear,
   UilWind,
   UilSun,
-  UilSunset,
+  UilSunset
 } from "@iconscout/react-unicons";
+import { geticonURL, formatLocalTime } from "../api/weather";
 
 function Tempdetail({ weather: { current, timezone } }) {
-  const {
-    detail,
-    temp,
-    temp_max,
-    temp_min,
-    sunrise,
-    sunset,
-    speed,
-    humidity,
-    feels_like,
-    icon,
-  } = current;
+  const { detail, temp, temp_max, temp_min, sunrise, sunset, speed, humidity, feels_like, icon } =
+    current;
   return (
     <div>
       {/* first row */}
@@ -39,9 +30,7 @@ function Tempdetail({ weather: { current, timezone } }) {
           <div className="flex justify-center items-center text-sm font-light">
             <UilTemperature size={18} className=" mr-1" />
             Real Feel:
-            <span className="font-medium ml-1">
-              {feels_like.toFixed()}&deg;
-            </span>
+            <span className="font-medium ml-1">{feels_like.toFixed()}&deg;</span>
           </div>
           <div className="flex justify-center items-center text-sm font-light">
             <UilTear size={18} className=" mr-1" />
@@ -61,29 +50,23 @@ function Tempdetail({ weather: { current, timezone } }) {
         <UilSun />
         <p className="font-light">
           Rise:{" "}
-          <span className="font-medium ml-1">
-            {formatLocalTime(sunrise, timezone, "hh:mm a")}
-          </span>
+          <span className="font-medium ml-1">{formatLocalTime(sunrise, timezone, "hh:mm a")}</span>
         </p>
         <p className="font-light">|</p>
         <UilSunset />
         <p className="font-light">
           Set:{" "}
-          <span className="font-medium ml-1">
-            {formatLocalTime(sunset, timezone, "hh:mm a")}
-          </span>
+          <span className="font-medium ml-1">{formatLocalTime(sunset, timezone, "hh:mm a")}</span>
         </p>
         <p className="font-light">|</p>
         <UilArrowUp />
         <p className="font-light">
-          High:{" "}
-          <span className="font-medium ml-1">{temp_max.toFixed()}&deg;</span>
+          High: <span className="font-medium ml-1">{temp_max.toFixed()}&deg;</span>
         </p>
         <p className="font-light">|</p>
         <UilArrowDown />
         <p className="font-light">
-          Low:{" "}
-          <span className="font-medium ml-1">{temp_min.toFixed()}&deg;</span>
+          Low: <span className="font-medium ml-1">{temp_min.toFixed()}&deg;</span>
         </p>
       </div>
     </div>

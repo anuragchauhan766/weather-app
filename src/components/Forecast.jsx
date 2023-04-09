@@ -1,11 +1,12 @@
 import React from "react";
+
 import Forecastdetail from "./Forecastdetail";
-import { data } from "autoprefixer";
+
 function Forecast(props) {
   const {
     title,
 
-    weather,
+    weather
   } = props;
   return (
     <div>
@@ -15,6 +16,7 @@ function Forecast(props) {
       <hr className="my-2" />
       <div className="flex flex-row justify-between items-center text-white">
         {weather.map((data, index) => (
+          // eslint-disable-next-line react/no-array-index-key
           <Forecastdetail data={data} key={index} />
         ))}
       </div>

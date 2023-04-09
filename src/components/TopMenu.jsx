@@ -5,29 +5,30 @@ function TopMenu(props) {
   const citites = [
     {
       id: 1,
-      title: "London",
+      title: "London"
     },
     {
       id: 2,
-      title: "New York",
+      title: "New York"
     },
     {
       id: 3,
-      title: "Mumbai",
+      title: "Mumbai"
     },
     {
       id: 4,
-      title: "Delhi",
+      title: "Delhi"
     },
     {
       id: 5,
-      title: "Kolkata",
-    },
+      title: "Kolkata"
+    }
   ];
   return (
     <div className="flex justify-around items-center">
       {citites.map((city) => (
         <button
+          type="button"
           className="text-lg text-white font-medium transition ease-out hover:scale-110"
           key={city.id}
           onClick={() => setCity(city.title)}

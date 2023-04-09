@@ -1,4 +1,4 @@
-import { useState, useEffect, memo } from "react";
+import { useState, useEffect } from "react";
 
 import TopMenu from "./components/TopMenu";
 import Search from "./components/Search";
@@ -6,7 +6,8 @@ import TimeLoc from "./components/TimeLoc";
 import Tempdetail from "./components/Tempdetail";
 import Forecast from "./components/Forecast";
 import { getweatherdata } from "./api/weather";
-const App = memo(() => {
+
+function App() {
   const [city, setCity] = useState("London");
   const [units, setUnits] = useState("metric");
   const [weather, setWeather] = useState(null);
@@ -31,6 +32,6 @@ const App = memo(() => {
       )}
     </div>
   );
-});
+}
 
 export default App;
